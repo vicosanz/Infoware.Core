@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Infoware.Core.Attributes;
 
 namespace Infoware.Core.Extensions
@@ -20,10 +17,7 @@ namespace Infoware.Core.Extensions
             var typeNullable = Nullable.GetUnderlyingType(type);
             type = typeNullable ?? type;
 
-            return type
-                .GetMember(value.ToString())
-                .OfType<ExternalCodeAttribute>()?
-                .FirstOrDefault();
+            return type.GetMember(value.ToString()).FirstOrDefault().GetCustomAttribute<ExternalCodeAttribute>();
         }
 
         public static ExternalCodeAttribute GetExternalCodeAttribute(PropertyInfo property)

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infoware.Core.Extensions
 {
@@ -20,10 +17,7 @@ namespace Infoware.Core.Extensions
             var typeNullable = Nullable.GetUnderlyingType(type);
             type = typeNullable ?? type;
 
-            return type
-                .GetMember(value.ToString())
-                .OfType<DisplayAttribute>()?
-                .FirstOrDefault();
+            return type.GetMember(value.ToString()).FirstOrDefault().GetCustomAttribute<DisplayAttribute>();
         }
 
         public static DisplayAttribute GetDisplayAttribute(PropertyInfo property)
