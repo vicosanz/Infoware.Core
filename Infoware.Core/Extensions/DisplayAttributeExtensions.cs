@@ -7,12 +7,9 @@ namespace Infoware.Core.Extensions
 {
     public static class DisplayAttributeExtensions
     {
-        public static DisplayAttribute GetDisplayAttribute(object value)
-        {
-            return GetDisplayAttribute(value.GetType(), value);
-        }
+		public static DisplayAttribute GetDisplayAttribute(object value) => GetDisplayAttribute(value.GetType(), value);
 
-        public static DisplayAttribute GetDisplayAttribute(Type type, object value)
+		public static DisplayAttribute GetDisplayAttribute(Type type, object value)
         {
             var typeNullable = Nullable.GetUnderlyingType(type);
             type = typeNullable ?? type;
@@ -20,10 +17,7 @@ namespace Infoware.Core.Extensions
             return type.GetMember(value.ToString()).FirstOrDefault().GetCustomAttribute<DisplayAttribute>();
         }
 
-        public static DisplayAttribute GetDisplayAttribute(PropertyInfo property)
-        {
-            return property
-                .GetCustomAttribute<DisplayAttribute>();
-        }
-    }
+		public static DisplayAttribute GetDisplayAttribute(PropertyInfo property) => property
+				.GetCustomAttribute<DisplayAttribute>();
+	}
 }
