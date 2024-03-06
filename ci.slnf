@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "Infoware.Core.sln",
+    "projects": [
+      "Infoware.Core\\Infoware.Core.csproj"
+    ]
+  }
+}

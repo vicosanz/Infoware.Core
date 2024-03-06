@@ -35,9 +35,6 @@ namespace Infoware.Core.Attributes
             Code = code;
         }
 
-		public bool IsCurrent(DateTime? validInDate)
-		{
-			return !validInDate.HasValue || !validFrom.HasValue || (validInDate.Value >= validFrom.Value && validInDate.Value <= (validTo ?? validFrom.Value));
-		}
+		public bool IsCurrent(DateTime? validInDate = null) => !validInDate.HasValue || !validFrom.HasValue || (validInDate.Value >= validFrom.Value && validInDate.Value <= (validTo ?? validInDate.Value));
 	}
 }

@@ -7,6 +7,8 @@ namespace Infoware.Core.Extensions
 {
     public static class DisplayAttributeExtensions
     {
+		public static string GetDisplayName(this Enum enumerate) => GetDisplayAttribute(enumerate)?.GetName();
+
 		public static DisplayAttribute GetDisplayAttribute(object value) => GetDisplayAttribute(value.GetType(), value);
 
 		public static DisplayAttribute GetDisplayAttribute(Type type, object value)
